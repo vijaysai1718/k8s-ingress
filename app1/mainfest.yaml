@@ -34,3 +34,30 @@ spec:
   - protocol: "TCP"
     port: 80
     targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+ name: ingress-wildcard
+ annotaions:
+  alb.ingress.kubernetes.io/scheme: internet-facing
+  alb.ingress.kubernetes.io/target-type: ip
+  alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+  alb.ingress.kubernetes.io/group.name: vijayexpense
+ labels:
+  name: app1
+  purpose: ingress
+spec:
+ ingressClassName: alb
+ rules:
+  - host: "app1.vijaysai.online" # ALB Rule
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app1 # ALB Target group
+            port:
+              number: 80
+ 
