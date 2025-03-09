@@ -50,7 +50,6 @@ metadata:
  name: ingress-wildcard
  annotations:
   alb.ingress.kubernetes.io/scheme: internet-facing
-  alb.ingress.kubernetes.io/target-type: ip
   alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
   alb.ingress.kubernetes.io/group.name: "vijayexpense"
   
@@ -60,11 +59,11 @@ metadata:
 spec:
  ingressClassName: alb
  rules:
-  - host: "app2.vijaysai.online" # ALB Rule
+  - host: app2.vijaysai.online # ALB Rule
     http:
       paths:
       - pathType: Prefix
-        path: "/"
+        path: /
         backend:
           service:
             name: app2 # ALB Target group
