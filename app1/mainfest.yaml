@@ -4,7 +4,7 @@ metadata:
  name: app1
 spec:
  selector:
-  matchlabel:
+  matchLabels:
    name: app1
    purpose: ingress
  template:
