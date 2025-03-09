@@ -7,15 +7,15 @@ spec:
   matchlabel:
    name: app1
    purpose: ingress
-template:
- metadata:
-  name: expense
-  labels:
-   name: app1
-   purpose: ingress
- spec:
-  containers:
-   - name: nginx
-     image: vijaysai/app1:1.0
-    
+ template:
+  metadata:
+    name: expense
+    labels:
+    name: app1
+    purpose: ingress
+  spec:
+    containers:
+    - name: nginx
+      image: vijaysai/app1:1.0
+      
   
