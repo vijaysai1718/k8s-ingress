@@ -11,8 +11,8 @@ spec:
   metadata:
     name: expense
     labels:
-    name: app1
-    purpose: ingress
+     name: app1
+     purpose: ingress
   spec:
     containers:
     - name: nginx
