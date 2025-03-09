@@ -58,7 +58,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: app1 # ALB Target group
+            name: app # ALB Target group
             port:
               number: 80
  
