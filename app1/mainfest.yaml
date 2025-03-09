@@ -59,7 +59,7 @@ metadata:
 spec:
  ingressClassName: alb
  rules:
-  - host: app1.vijaysai.online # ALB Rule
+  - host: "app1.vijaysai.online" # ALB Rule
     http:
       paths:
       - pathType: Prefix
