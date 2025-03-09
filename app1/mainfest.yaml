@@ -18,4 +18,20 @@ spec:
     - name: nginx
       image: vijaysai/app1:1.0
       
-  
+--------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+ name: app
+ labels:
+  name: app1
+  purpose: ingress
+specs:
+ selector:
+  name: app1
+  purpose: ingress
+ ports:
+  - protocol: tcp
+    port: 80
+    targetPort: 80
+    
