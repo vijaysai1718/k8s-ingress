@@ -18,13 +18,13 @@ spec:
     - name: nginx
       image: vijaysai1718/app1:1.0
       imagePullPolicy: Always
-    resources:
-      requests:
-        cpu: "100m"
-        memory: "128Mi"
-      limits:
-        cpu: "500m"
-        memory: "256Mi"
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "500m"
+          memory: "256Mi"
 
       
 ---
