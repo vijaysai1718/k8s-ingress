@@ -53,6 +53,7 @@ metadata:
   alb.ingress.kubernetes.io/target-type: ip
   alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
   alb.ingress.kubernetes.io/group.name: "vijayexpense"
+  
  labels:
   name: app1
   purpose: ingress
