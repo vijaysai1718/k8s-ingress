@@ -16,7 +16,7 @@ spec:
   spec:
     containers:
     - name: nginx
-      image: vijaysai1718/app1
+      image: vijaysai1718/app1:1.0
       imagePullPolicy: Always
       
 ---
