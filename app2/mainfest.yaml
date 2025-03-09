@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+ name: app2
+spec:
+ selector:
+  matchLabels:
+   name: app2
+   purpose: ingress
+ template:
+  metadata:
+    name: expense
+    labels:
+     name: app2
+     purpose: ingress
+  spec:
+    containers:
+    - name: nginx
+      image: vijaysai1718/app2:1.0
+      imagePullPolicy: Always
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "500m"
+          memory: "256Mi"
+
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: app
+ labels:
+  name: app2
+  purpose: ingress
+spec:
+ selector:
+  name: app2
+  purpose: ingress
+ ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+ name: ingress-wildcard
+ annotations:
+  alb.ingress.kubernetes.io/scheme: internet-facing
+  alb.ingress.kubernetes.io/target-type: ip
+  alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+  alb.ingress.kubernetes.io/group.name: vijayexpense
+ labels:
+  name: app2
+  purpose: ingress
+spec:
+ ingressClassName: alb
+ rules:
+  - host: "app2.vijaysai.online" # ALB Rule
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app # ALB Target group
+            port:
+              number: 80
+ 
